@@ -1,0 +1,62 @@
+import {
+  Activity,
+  ArrowUp,
+  ArrowUpRight,
+  Boxes,
+  Check,
+  CircuitBoard,
+  Code2,
+  Copy,
+  Cpu,
+  Download,
+  Figma,
+  FlaskConical,
+  Gauge,
+  Github,
+  LayoutTemplate,
+  Linkedin,
+  Mail,
+  Menu,
+  PenTool,
+  Radio,
+  Search,
+  Users,
+  Waves,
+  X,
+  Zap,
+  type LucideIcon,
+} from 'lucide-react'
+
+import type { IconName } from '../types'
+
+export const iconMap: Record<IconName, LucideIcon> = {
+  Activity,
+  ArrowUp,
+  ArrowUpRight,
+  Boxes,
+  Check,
+  CircuitBoard,
+  Code2,
+  Copy,
+  Cpu,
+  Download,
+  Figma,
+  FlaskConical,
+  Gauge,
+  Github,
+  LayoutTemplate,
+  Linkedin,
+  Mail,
+  Menu,
+  PenTool,
+  Radio,
+  Search,
+  Users,
+  Waves,
+  X,
+  Zap,
+}
+
+export function getIcon(name: IconName): LucideIcon {
+  return iconMap[name]
+}
