@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0B0D10" />
+    <meta
+      name="description"
+      content="Portrait study — hand-coded in HTML and SVG, with an optional original photo view."
+    />
+    <title>Portrait — HTML &amp; SVG | Marthish DN</title>
+    <style>
+      :root {
+        --canvas: #0b0d10;
+        --card: #14181f;
+        --raised: #1a2029;
+        --border: #232a35;
+        --line: #2b3543;
+        --text: #e6edf3;
+        --muted: #8b98a8;
+        --accent: #06b6d4;
+        --mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
+        --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        color-scheme: dark;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--canvas);
+        color: var(--text);
+        font-family: var(--sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 40px));
+        margin-inline: auto;
+        padding-block: 28px 64px;
+      }
+
+      .topbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .back {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 14px;
+        text-decoration: none;
+        transition: color 160ms ease;
+      }
+
+      .back:hover {
+        color: var(--accent);
+      }
+
+      .back svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+        gap: 48px;
+        align-items: start;
+        padding-top: 48px;
+      }
+
+      .intro h1 {
+        margin: 14px 0 18px;
+        max-width: 12ch;
+        font-size: clamp(2.4rem, 6vw, 4.25rem);
+        font-weight: 600;
+        letter-spacing: -0.045em;
+        line-height: 1.02;
+      }
+
+      .intro p {
+        margin: 0 0 28px;
+        max-width: 46ch;
+        color: var(--muted);
+        font-size: 16px;
+      }
+
+      .specs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: var(--border);
+      }
+
+      .spec {
+        padding: 16px 18px;
+        background: var(--card);
+      }
+
+      .spec dt {
+        margin: 0 0 6px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .spec dd {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      .note {
+        margin-top: 24px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 11px;
+        line-height: 1.8;
+      }
+
+      .note a {
+        color: var(--accent);
+        text-underline-offset: 3px;
+      }
+
+      .viewer {
+        position: relative;
+      }
+
+      .viewer > input {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .toolbar {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .tab {
+        cursor: pointer;
+        user-select: none;
+        padding: 8px 14px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--card);
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        transition:
+          border-color 160ms ease,
+          color 160ms ease,
+          background-color 160ms ease;
+      }
+
+      .tab:hover {
+        color: var(--text);
+        border-color: var(--line);
+      }
+
+      #view-illustrated:checked ~ .toolbar .tab--illustrated,
+      #view-original:checked ~ .toolbar .tab--original {
+        border-color: var(--accent);
+        background: rgba(6, 182, 212, 0.08);
+        color: var(--accent);
+      }
+
+      .viewer > input:focus-visible ~ .toolbar .tab {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .stage {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--card);
+        aspect-ratio: 3 / 4;
+      }
+
+      .slide {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      #view-illustrated:checked ~ .stage .slide--original,
+      #view-original:checked ~ .stage .slide--illustrated {
+        display: none;
+      }
+
+      .slide svg,
+      .slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .slide img {
+        object-fit: cover;
+      }
+
+      .caption {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 12px;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 820px) {
+        .layout {
+          grid-template-columns: 1fr;
+          gap: 36px;
+          padding-top: 36px;
+        }
+
+        .intro h1 {
+          max-width: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="back" href="./">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M19 12H5" />
+            <path d="m12 19-7-7 7-7" />
+          </svg>
+          Back to portfolio
+        </a>
+        <p class="eyebrow">Study / 01</p>
+      </header>
+
+      <main class="layout">
+        <section class="intro">
+          <p class="eyebrow">Hand-coded portrait</p>
+          <h1>Portrait in two views.</h1>
+          <p>
+            One subject, two renderings: a vector illustration drawn entirely in SVG, and the
+            original photograph. Toggle between them — no scripts, no backend, just static HTML,
+            CSS and markup.
+          </p>
+
+          <dl class="specs">
+            <div class="spec">
+              <dt>Medium</dt>
+              <dd>HTML + inline SVG</dd>
+            </div>
+            <div class="spec">
+              <dt>Palette</dt>
+              <dd>Canvas / elevated / cyan</dd>
+            </div>
+            <div class="spec">
+              <dt>Views</dt>
+              <dd>Illustrated · Original</dd>
+            </div>
+            <div class="spec">
+              <dt>Behavior</dt>
+              <dd>CSS-only toggle</dd>
+            </div>
+          </dl>
+
+          <p class="note">
+            Photo source:
+            <a href="https://kommodo.ai/i/empllDYoadS6meprFXaP" target="_blank" rel="noopener noreferrer"
+              >Kommodo share link</a
+            >.<br />A local copy is bundled at <code>portrait.jpg</code> so the page stays self-contained.
+          </p>
+        </section>
+
+        <section class="viewer" aria-label="Portrait views">
+          <input type="radio" name="portrait-view" id="view-illustrated" checked />
+          <input type="radio" name="portrait-view" id="view-original" />
+
+          <div class="toolbar">
+            <label class="tab tab--illustrated" for="view-illustrated">Illustrated</label>
+            <label class="tab tab--original" for="view-original">Original</label>
+          </div>
+
+          <div class="stage">
+            <figure class="slide slide--illustrated">
+              <svg viewBox="0 0 600 800" role="img" aria-labelledby="portrait-title portrait-desc">
+                <title id="portrait-title">Illustrated portrait of Marthish DN</title>
+                <desc id="portrait-desc">
+                  A geometric line-art bust with circuit traces, drawn in SVG.
+                </desc>
+
+                <defs>
+                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M40 0H0v40" fill="none" stroke="#1c232c" stroke-width="1" />
+                  </pattern>
+                </defs>
+
+                <rect width="600" height="800" fill="#0b0d10" />
+                <rect width="600" height="800" fill="url(#grid)" />
+
+                <circle cx="300" cy="286" r="186" fill="none" stroke="#1f2833" stroke-width="1" />
+                <circle cx="300" cy="286" r="146" fill="none" stroke="#162029" stroke-width="1" />
+
+                <path
+                  d="M96 800c18-118 92-184 204-184s186 66 204 184"
+                  fill="#14181f"
+                  stroke="#2b3543"
+                  stroke-width="2"
+                />
+                <path d="M256 566h88v86h-88z" fill="#1a2029" stroke="#2b3543" stroke-width="2" />
+                <path d="M238 636c22 34 102 34 124 0" fill="none" stroke="#06b6d4" stroke-width="2" />
+
+                <ellipse
+                  cx="300"
+                  cy="286"
+                  rx="112"
+                  ry="142"
+                  fill="#1a2029"
+                  stroke="#2b3543"
+                  stroke-width="2"
+                />
+
+                <path
+                  d="M188 278c0-92 46-146 112-146s112 54 112 146c0-42-28-70-64-70-26 0-42 18-48 18s-22-18-48-18c-36 0-64 28-64 70z"
+                  fill="#0b0d10"
+                  stroke="#2b3543"
+                  stroke-width="2"
+                />
+
+                <path d="M246 282h34" stroke="#06b6d4" stroke-width="3" stroke-linecap="round" />
+                <path d="M320 282h34" stroke="#06b6d4" stroke-width="3" stroke-linecap="round" />
+                <path d="M300 300v32l-12 10" fill="none" stroke="#3b4857" stroke-width="2" />
+                <path d="M274 370c18 10 34 10 52 0" fill="none" stroke="#3b4857" stroke-width="2" />
+
+                <g fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.75">
+                  <path d="M412 240h56v-42h34" />
+                  <path d="M412 258h72" />
+                  <path d="M412 276h48v34h30" />
+                  <circle cx="502" cy="198" r="4" fill="#06b6d4" stroke="none" />
+                  <circle cx="490" cy="310" r="4" fill="#06b6d4" stroke="none" />
+                </g>
+
+                <g fill="none" stroke="#2b3543" stroke-width="1.5" opacity="0.8">
+                  <path d="M188 240h-42v-42h-30" />
+                  <path d="M188 258h-56" />
+                  <path d="M188 276h-44v34h-28" />
+                </g>
+
+                <g font-family="ui-monospace, monospace" font-size="11" fill="#8b98a8">
+                  <text x="32" y="40" letter-spacing="2">FIG. 01 — ILLUSTRATED</text>
+                  <text x="568" y="40" text-anchor="end" letter-spacing="2">600 × 800</text>
+                  <text x="32" y="770" letter-spacing="2">HARDWARE → INTERFACE</text>
+                  <text x="568" y="770" text-anchor="end" letter-spacing="2">MD / 2026</text>
+                </g>
+              </svg>
+            </figure>
+
+            <figure class="slide slide--original">
+              <img src="portrait.jpg" alt="Original portrait photograph" width="506" height="673" />
+            </figure>
+          </div>
+
+          <div class="caption">
+            <span>Toggle view</span>
+            <span>Static · no backend</span>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -30,6 +30,8 @@ npm run preview     # preview the production build
 | Navbar + contact footer | `src/components/layout/*` |
 | Colours, fonts, radii, motion tokens | `tailwind.config.ts` |
 | Global base styles | `src/index.css` |
+| Static portrait study (HTML + SVG, CSS-only view toggle) | `public/portrait.html` |
+| Portrait photo used by the study | `public/portrait.jpg` |
 
 ### Adding a case study
 

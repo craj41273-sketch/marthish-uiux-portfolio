@@ -54,9 +54,17 @@ export function About() {
                 ))}
               </div>
             </div>
-            <div className="mt-8 border-t border-line pt-6">
+            <div className="mt-8 space-y-3 border-t border-line pt-6">
               <Button href={site.resumeUrl} download icon="Download" variant="ghost" className="w-full">
                 Download Resume
+              </Button>
+              <Button
+                href={`${import.meta.env.BASE_URL}portrait.html`}
+                icon="ArrowUpRight"
+                variant="ghost"
+                className="w-full"
+              >
+                View Portrait Study
               </Button>
             </div>
           </Card>
