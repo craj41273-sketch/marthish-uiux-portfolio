@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#060b13" />
+  <meta name="description" content="Marthish DN is an electronics and communication engineering student building embedded systems, automation and robotics projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Marthish DN — Embedded Systems & Automation" />
+  <meta property="og:description" content="Turning circuit diagrams into working systems: embedded electronics, automation and robotics." />
+  <meta property="og:url" content="https://craj41273-sketch.github.io/marthish-uiux-portfolio/classic-portfolio/" />
+  <title>Marthish DN | Embedded Systems &amp; Automation</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Marthish DN",
+      "jobTitle": "Electronics & Communication Engineering Student",
+      "description": "Building embedded systems, automation and robotics projects.",
+      "email": "mailto:marthish05@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "Chintamani", "addressRegion": "Karnataka", "addressCountry": "IN" },
+      "url": "https://craj41273-sketch.github.io/marthish-uiux-portfolio/classic-portfolio/"
+    }
+  </script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Marthish DN — home">
+        <span class="brand__mark" aria-hidden="true">MD</span>
+        <span class="brand__name">Marthish <span>DN</span></span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links" id="primary-nav" aria-label="Primary navigation">
+        <a class="nav__link" data-nav="home" href="index.html">Home</a>
+        <a class="nav__link" data-nav="projects" href="projects.html">Projects</a>
+        <a class="nav__link" data-nav="embedded" href="embedded-systems.html">Embedded Systems</a>
+        <a class="nav__link" data-nav="contact" href="contact.html">Contact</a>
+        <a class="nav__link" href="../">UI/UX Portfolio ↗</a>
+        <a class="btn btn--primary btn--small nav__cta" href="contact.html">Let's talk <span class="btn__arrow" aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="container hero">
+      <div class="hero__content reveal">
+        <span class="availability">Available for learning &amp; collaboration</span>
+        <span class="eyebrow">Electronics · Automation · Robotics</span>
+        <h1>Building ideas into <span class="text-accent">working systems.</span></h1>
+        <p class="lead">I'm Marthish DN, an electronics and communication engineering student who turns schematics into reliable hardware. I work across microcontrollers, sensors and automation — from the first signal path to a tested prototype.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="projects.html">Explore my projects <span class="btn__arrow" aria-hidden="true">↗</span></a>
+          <a class="btn btn--ghost" href="contact.html">Start a conversation</a>
+        </div>
+        <div class="stats" aria-label="At a glance">
+          <div class="stat"><strong>06</strong><span>projects built</span></div>
+          <div class="stat"><strong>90h</strong><span>industrial training</span></div>
+          <div class="stat"><strong>03</strong><span>core focus areas</span></div>
+        </div>
+      </div>
+
+      <div class="hero__visual reveal" data-delay="1" aria-label="Illustration of a sensing and control signal path">
+        <div class="system-card">
+          <div class="system-card__bar">
+            <span class="system-card__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="system-card__title">signal_path / overview.md</span>
+          </div>
+          <div class="system-card__body">
+            <div class="system-card__label"><span>Input → Logic → Output</span><span>REV 01</span></div>
+            <pre class="code-block"><span class="c">// the loop I keep coming back to</span>
+<span class="k">sense</span>(environment);
+<span class="k">decide</span>(thresholds);
+<span class="k">actuate</span>(output);
+<span class="v">verify</span>(); <span class="c">// repeat until dependable</span></pre>
+            <div class="signal-path">
+              <div class="signal-node">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v10"/><circle cx="12" cy="17" r="4"/><path d="M4 8h4M16 8h4"/></svg>
+                <span>SENSE</span>
+              </div>
+              <div class="signal-arrow" aria-hidden="true">→</div>
+              <div class="signal-node signal-node--core">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>
+                <span>CONTROL</span>
+              </div>
+              <div class="signal-arrow" aria-hidden="true">→</div>
+              <div class="signal-node">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+                <span>ACT</span>
+              </div>
+            </div>
+            <div class="readout">
+              <div class="readout__row"><span>INPUT</span><b>sensors online</b></div>
+              <div class="readout__row"><span>LOGIC</span><b>thresholds tuned</b></div>
+              <div class="readout__row"><span>OUTPUT</span><b class="amber">actuators ready</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">What I work on</span>
+            <h2>Hardware with a purpose.</h2>
+          </div>
+          <p class="lead">I enjoy the space between a schematic and a working object: choosing the right sensor, shaping the logic, then testing until the system feels dependable.</p>
+        </div>
+        <div class="grid grid--3">
+          <article class="card reveal">
+            <span class="card__index">01 / EMBEDDED</span>
+            <h3>Systems that sense</h3>
+            <p>Microcontrollers, sensors and actuators working together in the physical world — with logic that is easy to follow and easy to debug.</p>
+            <div class="chip-list"><span class="chip">Arduino</span><span class="chip">ESP8266</span><span class="chip">DHT11</span><span class="chip">OLED</span></div>
+          </article>
+          <article class="card reveal" data-delay="1">
+            <span class="card__index">02 / AUTOMATION</span>
+            <h3>Builds that respond</h3>
+            <p>Solar tracking, relay control and autonomous navigation: small systems that read their environment and make a useful decision.</p>
+            <div class="chip-list"><span class="chip">Servo</span><span class="chip">LDR</span><span class="chip">Relays</span><span class="chip">Ultrasonic</span></div>
+          </article>
+          <article class="card reveal" data-delay="2">
+            <span class="card__index">03 / INTERFACES</span>
+            <h3>Connected &amp; usable</h3>
+            <p>Wi-Fi monitoring and browser-based control that make hardware approachable, whether it's a dashboard or a simple local web UI.</p>
+            <div class="chip-list"><span class="chip">Wi-Fi</span><span class="chip">IoT</span><span class="chip">HTML UI</span><span class="chip">Proteus 8</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Selected work</span>
+            <h2>Proof, not just plans.</h2>
+          </div>
+          <p class="lead">A few builds from the workshop — each one a lesson in signal paths, tuning and troubleshooting.</p>
+        </div>
+        <div class="grid grid--3">
+          <a class="card project-card reveal" href="projects.html">
+            <div class="project-card__top"><span class="tag">Automation</span><span class="card__index">01</span></div>
+            <h3>Solar Tracking System</h3>
+            <p>Arduino Uno R3, LDRs and a servo motor align a panel toward the brightest point of the sky.</p>
+            <div class="project-card__signal"><b>LDR → Arduino → Servo</b></div>
+          </a>
+          <a class="card project-card reveal" href="projects.html" data-delay="1">
+            <div class="project-card__top"><span class="tag">IoT / Safety</span><span class="card__index">02</span></div>
+            <h3>Third Military Eye</h3>
+            <p>An ESP8266 Wi-Fi turret and radar concept combining ultrasonic sensing with servo control.</p>
+            <div class="project-card__signal"><b>ESP8266 → Radar → Servo</b></div>
+          </a>
+          <a class="card project-card reveal" href="projects.html" data-delay="2">
+            <div class="project-card__top"><span class="tag">Monitoring</span><span class="card__index">03</span></div>
+            <h3>Weather Monitoring System</h3>
+            <p>Live temperature, humidity and rain readings on an OLED, built around an ESP8266 and DHT11.</p>
+            <div class="project-card__signal"><b>DHT11 → ESP8266 → OLED</b></div>
+          </a>
+        </div>
+        <div class="actions reveal"><a class="btn btn--ghost" href="projects.html">View all six projects <span class="btn__arrow" aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">How I work</span>
+            <h2>A clear path from idea to prototype.</h2>
+          </div>
+          <p class="lead">I keep the signal chain simple, make each stage testable, and improve it through hands-on iteration.</p>
+        </div>
+        <div class="process reveal">
+          <div class="process__step"><b>01 / DEFINE</b><h4>Understand the signal</h4><p>What needs to be measured, and what should happen in response?</p></div>
+          <div class="process__step"><b>02 / PROTOTYPE</b><h4>Wire the path</h4><p>Pick the board, sensor and actuator. Build the smallest working version first.</p></div>
+          <div class="process__step"><b>03 / TUNE</b><h4>Test and adjust</h4><p>Diagnose faults, tune thresholds and make the behaviour repeatable.</p></div>
+          <div class="process__step"><b>04 / SHARE</b><h4>Document the build</h4><p>Leave behind clear notes, wiring logic and next steps anyone can follow.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="cta-band reveal">
+          <span class="eyebrow">Open to possibilities</span>
+          <h2>Have something that needs to sense, move or respond?</h2>
+          <p>I'm interested in internships, project collaborations and conversations about embedded systems and practical automation.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="contact.html">Get in touch <span class="btn__arrow" aria-hidden="true">↗</span></a>
+            <a class="btn btn--ghost" href="embedded-systems.html">See my technical focus</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__mark" aria-hidden="true">MD</span>
+        <div><strong>Marthish DN</strong><small>Electronics · Automation · Robotics</small></div>
+      </div>
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href="index.html">Home</a><a href="projects.html">Projects</a><a href="embedded-systems.html">Embedded Systems</a><a href="contact.html">Contact</a><a href="mailto:marthish05@gmail.com">Email</a>
+      </nav>
+      <div class="footer__meta">© <span data-year>2026</span> Marthish DN</div>
+    </div>
+  </footer>
+  <button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -66,6 +66,14 @@ export function About() {
               >
                 View Portrait Study
               </Button>
+              <Button
+                href={`${import.meta.env.BASE_URL}classic-portfolio/`}
+                icon="ArrowUpRight"
+                variant="ghost"
+                className="w-full"
+              >
+                View Classic Portfolio
+              </Button>
             </div>
           </Card>
         </Reveal>

@@ -32,6 +32,7 @@ npm run preview     # preview the production build
 | Global base styles | `src/index.css` |
 | Static portrait study (HTML + SVG, CSS-only view toggle) | `public/portrait.html` |
 | Portrait photo used by the study | `public/portrait.jpg` |
+| Classic multi-page static portfolio | `public/classic-portfolio/` |
 
 ### Adding a case study
 
@@ -76,6 +77,13 @@ This repo deploys automatically on every push to `master` via `.github/workflows
 `vite.config.ts` sets the production base path to `/marthish-uiux-portfolio/` so asset URLs resolve correctly at `https://craj41273-sketch.github.io/marthish-uiux-portfolio/`. To deploy under a different repository name, change that base path to `/<repo-name>/`.
 
 In the repository settings, **Settings → Pages → Build and deployment → Source** must be set to **GitHub Actions**.
+
+## Included static projects
+
+- `/portrait.html` — hand-coded HTML/SVG portrait study with a CSS-only view toggle.
+- `/classic-portfolio/` — the earlier multi-page static portfolio (Home, Projects, Embedded Systems, Contact), now hosted from the same repo. Its links are relative, so it works under the `/marthish-uiux-portfolio/` subpath.
+
+Both are plain static files in `public/` and need no backend.
 
 ## Accessibility notes
 

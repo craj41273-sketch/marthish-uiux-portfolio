@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#060b13" />
+  <meta name="description" content="Contact Marthish DN about embedded systems, automation, internships and project collaboration." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact | Marthish DN" />
+  <meta property="og:description" content="Open to internships, project collaborations and conversations about electronics." />
+  <meta property="og:url" content="https://craj41273-sketch.github.io/marthish-uiux-portfolio/classic-portfolio/contact.html" />
+  <title>Contact | Marthish DN</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="contact">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Marthish DN — home">
+        <span class="brand__mark" aria-hidden="true">MD</span>
+        <span class="brand__name">Marthish <span>DN</span></span>
+      </a>
+      <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav__links" id="primary-nav" aria-label="Primary navigation">
+        <a class="nav__link" data-nav="home" href="index.html">Home</a>
+        <a class="nav__link" data-nav="projects" href="projects.html">Projects</a>
+        <a class="nav__link" data-nav="embedded" href="embedded-systems.html">Embedded Systems</a>
+        <a class="nav__link" data-nav="contact" href="contact.html">Contact</a>
+        <a class="nav__link" href="../">UI/UX Portfolio ↗</a>
+        <a class="btn btn--primary btn--small nav__cta" href="mailto:marthish05@gmail.com">Email me <span class="btn__arrow" aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="container page-hero">
+      <span class="eyebrow reveal">Open channel</span>
+      <h1 class="reveal">Let's build the next thing.</h1>
+      <p class="lead reveal" data-delay="1">Have a project idea, an internship opportunity, or just want to talk electronics? Send a note below — I'll prepare it as a ready-to-send email so nothing gets lost between the browser and your inbox.</p>
+      <div class="page-hero__meta reveal" data-delay="2"><span>Internships</span><span>Project collaborations</span><span>Embedded systems</span></div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="container contact-layout">
+        <div class="card reveal">
+          <span class="tag">Direct contact</span>
+          <h3 style="margin-top:18px">Marthish DN</h3>
+          <div class="contact-detail">
+            <small>Email</small>
+            <a href="mailto:marthish05@gmail.com">marthish05@gmail.com</a>
+          </div>
+          <div class="contact-detail">
+            <small>Based in</small>
+            <span>Chintamani, Karnataka, India</span>
+          </div>
+          <div class="contact-detail">
+            <small>Currently</small>
+            <span>Available for learning &amp; collaboration</span>
+          </div>
+          <div class="contact-detail">
+            <small>Good fit for</small>
+            <p>Embedded systems work, automation experiments, hardware prototypes and conversations about practical electronics.</p>
+          </div>
+          <div class="actions">
+            <a class="btn btn--primary btn--small" href="mailto:marthish05@gmail.com">Open email <span class="btn__arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div class="card reveal" data-delay="1">
+          <span class="tag tag--amber">Send a note</span>
+          <h3 style="margin-top:18px">Tell me what you're working on.</h3>
+          <form class="form" id="contact-form" action="mailto:marthish05@gmail.com" method="post" enctype="text/plain">
+            <div class="form__row">
+              <div class="form__field">
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+              </div>
+              <div class="form__field">
+                <label for="email">Your email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+              </div>
+            </div>
+            <div class="form__field">
+              <label for="topic">What's this about?</label>
+              <select id="topic" name="topic">
+                <option>Project / collaboration</option>
+                <option>Internship opportunity</option>
+                <option>Embedded systems question</option>
+                <option>Just saying hello</option>
+              </select>
+            </div>
+            <div class="form__field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required placeholder="Share a little about the idea, the hardware or the opportunity..."></textarea>
+            </div>
+            <div>
+              <button class="btn btn--primary" type="submit">Prepare message <span class="btn__arrow" aria-hidden="true">↗</span></button>
+              <p class="form__note" style="margin-top:12px">This portfolio is static: the form prepares a prefilled email in your mail app. No data is stored on a server.</p>
+            </div>
+          </form>
+
+          <div class="form__result" id="form-result" hidden>
+            <h4>Your message is ready.</h4>
+            <p>Open it in your email app, or copy the text and paste it anywhere you prefer.</p>
+            <div class="actions">
+              <a class="btn btn--primary btn--small" id="result-mailto" href="#">Open in email app <span class="btn__arrow" aria-hidden="true">↗</span></a>
+              <button class="btn btn--ghost btn--small" id="result-copy" type="button">Copy message</button>
+            </div>
+            <span class="form__note" id="copy-feedback" aria-live="polite"></span>
+            <pre id="result-text"></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__mark" aria-hidden="true">MD</span>
+        <div><strong>Marthish DN</strong><small>Electronics · Automation · Robotics</small></div>
+      </div>
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href="index.html">Home</a><a href="projects.html">Projects</a><a href="embedded-systems.html">Embedded Systems</a><a href="contact.html">Contact</a><a href="mailto:marthish05@gmail.com">Email</a>
+      </nav>
+      <div class="footer__meta">© <span data-year>2026</span> Marthish DN</div>
+    </div>
+  </footer>
+  <button class="to-top" id="to-top" type="button" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>
