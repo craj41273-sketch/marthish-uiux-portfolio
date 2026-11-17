@@ -11,7 +11,7 @@ export const site: SiteContent = {
   email: 'hello@example.com',
   location: 'Chintamani, Karnataka, India',
   availability: 'Available for product design internships & collaborations',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: `${import.meta.env.BASE_URL}resume.pdf`,
   nav: [
     { label: 'Work', href: '#work' },
     { label: 'Process', href: '#process' },

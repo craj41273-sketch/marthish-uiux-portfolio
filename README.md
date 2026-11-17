@@ -69,7 +69,11 @@ src/
 
 ## Deploying to GitHub Pages
 
-If you deploy under a subpath, set `base` in `vite.config.ts` to the repository path (for example `base: '/portfolio/'`) before building.
+This repo deploys automatically on every push to `master` via `.github/workflows/deploy.yml`. The workflow installs dependencies, runs `npm run build`, and publishes the generated `dist/` folder as a static GitHub Pages site.
+
+`vite.config.ts` sets the production base path to `/marthish-uiux-portfolio/` so asset URLs resolve correctly at `https://craj41273-sketch.github.io/marthish-uiux-portfolio/`. To deploy under a different repository name, change that base path to `/<repo-name>/`.
+
+In the repository settings, **Settings → Pages → Build and deployment → Source** must be set to **GitHub Actions**.
 
 ## Accessibility notes
 
