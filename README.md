@@ -17,6 +17,7 @@ Other scripts:
 npm run typecheck   # TypeScript only
 npm run build       # typecheck + production build into dist/
 npm run preview     # preview the production build
+npm run astryx -- component Button   # read Astryx component docs
 ```
 
 ## Where to edit things
@@ -29,7 +30,8 @@ npm run preview     # preview the production build
 | Hero, Work, Skills, Process, About copy/layout | `src/components/sections/*` |
 | Navbar + contact footer | `src/components/layout/*` |
 | Colours, fonts, radii, motion tokens | `tailwind.config.ts` |
-| Global base styles | `src/index.css` |
+| Astryx theme tokens (dark canvas + cyan accent) | `src/theme/portfolioTheme.ts` |
+| Global base styles + Astryx CSS imports | `src/index.css` |
 | Static portrait study (HTML + SVG, CSS-only view toggle) | `public/portrait.html` |
 | Portrait photo used by the study | `public/portrait.jpg` |
 | Classic multi-page static portfolio | `public/classic-portfolio/` |
@@ -48,6 +50,7 @@ Append an object to the `projects` array in `src/data/projects.ts`. The bento ca
 
 ## Design system
 
+- Built on the **Astryx** design system (`@astryxdesign/core`) with a custom dark theme derived from `neutralTheme`; `Button`, `Card`, and `Badge` wrappers use Astryx primitives.
 - Canvas `#0B0D10`, elevated cards `#14181F`, raised surfaces `#1A2029`, 1px borders `#232A35`
 - Accent `#06B6D4` used sparingly for tags, focus rings and hover states — no gradients
 - Inter for UI, JetBrains Mono for technical labels and specs (self-hosted via `@fontsource`)

@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react'
+import { isValidElement, type ReactNode } from 'react'
+import { Button as AstryxButton } from '@astryxdesign/core/Button'
 
-import { cn } from '../../lib/cn'
 import { getIcon } from '../../lib/icons'
 import type { IconName } from '../../types'
 
@@ -17,14 +17,17 @@ type ButtonProps = {
   ariaLabel?: string
 }
 
-const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition duration-200 ease-craft'
-
-const variants: Record<NonNullable<ButtonProps['variant']>, string> = {
-  primary: 'bg-accent text-canvas hover:bg-accent/90',
-  ghost: 'border border-line bg-surface/40 text-ink hover:border-accent/50 hover:text-white',
+function nodeToText(node: ReactNode): string {
+  if (typeof node === 'string' || typeof node === 'number') return String(node)
+  if (Array.isArray(node)) return node.map(nodeToText).join(' ')
+  if (isValidElement<{ children?: ReactNode }>(node)) return nodeToText(node.props.children)
+  return ''
 }
 
+/**
+ * Thin adapter over Astryx Button so existing call sites keep their simple
+ * icon-name API while the actual control comes from the design system.
+ */
 export function Button({
   children,
   href,
@@ -38,27 +41,26 @@ export function Button({
   ariaLabel,
 }: ButtonProps) {
   const Icon = icon ? getIcon(icon) : null
-  const classes = cn(base, variants[variant], className)
-
-  const content = (
-    <>
-      {Icon && iconPosition === 'left' && <Icon size={16} strokeWidth={1.8} aria-hidden="true" />}
-      {children}
-      {Icon && iconPosition === 'right' && <Icon size={16} strokeWidth={1.8} aria-hidden="true" />}
-    </>
-  )
-
-  if (href) {
-    return (
-      <a href={href} download={download} aria-label={ariaLabel} className={classes}>
-        {content}
-      </a>
-    )
-  }
+  const iconNode = Icon ? <Icon size={16} strokeWidth={1.8} aria-hidden="true" /> : undefined
+  const label = ariaLabel || nodeToText(children) || 'Action'
+  const fullWidth = className?.split(/\s+/).includes('w-full') ?? false
+  const downloadProps = download ? ({ download: '' } as Record<string, unknown>) : {}
 
   return (
-    <button type={type} onClick={onClick} aria-label={ariaLabel} className={classes}>
-      {content}
-    </button>
+    <AstryxButton
+      label={label}
+      href={href}
+      variant={variant === 'ghost' ? 'ghost' : 'primary'}
+      size="md"
+      type={type}
+      onClick={onClick}
+      icon={iconPosition === 'left' ? iconNode : undefined}
+      endContent={iconPosition === 'right' ? iconNode : undefined}
+      width={fullWidth ? '100%' : undefined}
+      className={className}
+      {...downloadProps}
+    >
+      {children}
+    </AstryxButton>
   )
 }

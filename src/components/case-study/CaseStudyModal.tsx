@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Button as AstryxButton } from '@astryxdesign/core/Button'
 
 import { getIcon } from '../../lib/icons'
 import type { CaseStudy } from '../../types'
@@ -83,15 +84,15 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
             Case study / {project.index}
           </p>
-          <button
+          <AstryxButton
             ref={closeRef}
-            type="button"
+            label="Close case study"
+            variant="ghost"
+            size="sm"
+            isIconOnly
+            icon={<CloseIcon size={17} strokeWidth={1.8} aria-hidden="true" />}
             onClick={onClose}
-            aria-label="Close case study"
-            className="grid h-9 w-9 place-items-center rounded-lg border border-line text-muted transition hover:border-accent/50 hover:text-accent"
-          >
-            <CloseIcon size={17} strokeWidth={1.8} aria-hidden="true" />
-          </button>
+          />
         </div>
 
         <div className="px-6 py-8 sm:px-10 sm:py-10">
