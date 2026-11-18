@@ -17,6 +17,26 @@
 @layer base {
   :root {
     color-scheme: dark;
+
+    /* Sakuga VFX palette — restyled only through --sk-* variables. */
+    --sk-card: #14181f;
+    --sk-ink: #e6edf3;
+    --sk-dim: #8b98a8;
+    --sk-soft: #2b3543;
+    --sk-pri: #06b6d4;
+    --sk-pri-ink: #0b0d10;
+    --sk-acc: #06b6d4;
+    --sk-track: #232a35;
+    --sk-r: 12px;
+    --sk-bw: 2px;
+    --sk-sh: 4px 5px 0 #232a35;
+    --sk-btn-sh: var(--sk-sh);
+    --sk-btn-line: var(--sk-ink);
+    --sk-alt-sh: var(--sk-sh);
+    --sk-alt-line: var(--sk-ink);
+    --sk-tick: var(--sk-ink);
+    --sk-fill: var(--sk-acc);
+    --sk-on-pri: #0b0d10;
   }
 
   html {

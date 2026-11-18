@@ -4,6 +4,7 @@ import { Navbar } from './components/layout/Navbar'
 import { About } from './components/sections/About'
 import { Hero } from './components/sections/Hero'
 import { Process } from './components/sections/Process'
+import { SakugaChapters } from './components/sections/SakugaChapters'
 import { SkillsMatrix } from './components/sections/SkillsMatrix'
 import { Work } from './components/sections/Work'
 import { projects } from './data/projects'
@@ -18,6 +19,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <SakugaChapters />
         <Work />
         <SkillsMatrix />
         <Process />

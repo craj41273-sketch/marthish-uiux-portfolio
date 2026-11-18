@@ -35,6 +35,9 @@ npm run astryx -- component Button   # read Astryx component docs
 | Static portrait study (HTML + SVG, CSS-only view toggle) | `public/portrait.html` |
 | Portrait photo used by the study | `public/portrait.jpg` |
 | Classic multi-page static portfolio | `public/classic-portfolio/` |
+| Sakuga tabs component (unmodified upstream file) | `public/tabs.js` |
+| Sakuga tabs + panel wiring | `src/components/sections/SakugaChapters.tsx` |
+| Sakuga `--sk-*` colour variables | `src/index.css` |
 
 ### Adding a case study
 
@@ -87,6 +90,10 @@ In the repository settings, **Settings → Pages → Build and deployment → So
 - `/classic-portfolio/` — the earlier multi-page static portfolio (Home, Projects, Embedded Systems, Contact), now hosted from the same repo. Its links are relative, so it works under the `/marthish-uiux-portfolio/` subpath.
 
 Both are plain static files in `public/` and need no backend.
+
+## Sakuga tabs
+
+`public/tabs.js` is the unmodified single-file `<sakuga-tabs>` component from https://sakuga-vfx.vercel.app/tabs/tabs.js, loaded with a plain (non-module) script tag in `index.html`. `SakugaChapters` renders the `<option>` list and listens for the component's `change` event (`detail.index`, `detail.value`, `detail.label`) to show the matching panel. Its colours are set only through `--sk-*` variables in `src/index.css`; the effects file is not edited.
 
 ## Accessibility notes
 
